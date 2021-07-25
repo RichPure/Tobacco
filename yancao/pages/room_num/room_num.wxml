@@ -1,0 +1,16 @@
+<!--pages/room_num/room_num.wxml-->
+<view class="title">三、业态类型-场所规模</view>
+
+<radio-group class="type" bindchange="typeChange">
+    <label class="radio" wx:for="{{items}}" wx:key="id">
+      <view class="option">
+        <radio value="{{item.id}}" checked="{{item.checked}}">{{item.value}}</radio>
+        <view class="input_title">
+          <view >{{item.input}}</view>
+          <input type="number" maxlength="10"  bindinput="bindKeyInput" placeholder="请输入"/>
+        </view>
+      </view>
+    </label>
+</radio-group>
+
+<button class="begin" type="primary" bindtap="handleSubmit">确定</button>

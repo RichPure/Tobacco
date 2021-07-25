@@ -1,0 +1,54 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "place",
+          "pathName": "pages/place/place",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "business",
+          "pathName": "pages/business/business",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "grids",
+          "pathName": "pages/grids/grids",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "room_num",
+          "pathName": "pages/room_num/room_num",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "result",
+          "pathName": "pages/result/result",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "ownership",
+          "pathName": "pages/ownership/ownership",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

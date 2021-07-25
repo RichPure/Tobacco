@@ -1,0 +1,23 @@
+.welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  left: 0rpx;
+  top: 90rpx;
+}
+.welcome .tobacco {
+  width: 33%;
+}
+.slogan {
+  position: relative;
+  text-align: center;
+  left: 0rpx;
+  top: 190rpx;
+}
+.begin {
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translateX(-50%);
+}

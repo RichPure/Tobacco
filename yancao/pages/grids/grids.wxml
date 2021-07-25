@@ -1,0 +1,26 @@
+<!--pages/grids/grids.wxml-->
+<view class="title">四、网格信息</view>
+
+<view class="belone">
+  <text>1.所属网格：</text>
+  <input class="input" type="number" maxlength="10" bindinput="bindGridInput" placeholder="请输入" />
+</view>
+
+<view class="grade">
+  <text>2.网格等级:</text>
+  <radio-group class="choice" bindchange="handleChange">
+    <label class="radio" wx:for="{{items}}" wx:key="id">
+        <radio value="{{item.id}}"/>{{item.value}}
+    </label>
+
+  </radio-group>
+</view>
+
+<view class="location">
+  <text>3.坐标采集：</text>
+  <input class="jing" type="digit" maxlength="10" bindinput="bindLatitudeInput" value="{{latitude}}" />
+  <input class="wei" type="digit" maxlength="10" bindinput="bindLongitudeInput" value="{{longitude}}" />
+  <button class="button" bindtap="handleGetLocation">点击获取经纬度信息</button>
+</view>
+
+<button class="begin" type="primary"  bindtap="handleSubmit">确定</button>

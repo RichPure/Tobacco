@@ -1,0 +1,10 @@
+<!--index.wxml-->
+<view class="welcome">
+  <image class="tobacco" mode="widthFix" lazy-load src="/icons/china_tobacco.jpeg"></image>
+</view> 
+<view class="slogan" >欢迎使用勘验助手</view>
+
+
+<view class="begin">
+      <button type="primary" bindtap="handleStart">开始</button>
+</view>
