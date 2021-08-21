@@ -48,7 +48,7 @@ type GridInfo struct {
 }
 
 func getDistance(lat1, lon1, lat2, lon2 float64) (distance float64) {
-	radius := 6371000.0 //6378137.0
+	radius := 6378137.0
 	rad := math.Pi / 180.0
 	lat1 = lat1 * rad
 	lon1 = lon1 * rad
@@ -75,12 +75,14 @@ func handleGrid(db *gorm.DB, req *GridRequest) (resp GridResponse) {
 	var clients []ClientInfo
 	db.Table("client_info").Find(&clients, clientIds)
 	var minClient ClientInfo = clients[0]
-	minDistance := getDistance(req.Latitude, req.Longitude, minClient.Latitude, minClient.Longitude)
-	for _, client := range clients {
-		dis := getDistance(req.Latitude, req.Longitude, client.Longitude, client.Latitude)
-		if dis < minDistance {
-			minClient = client
-			minDistance = dis
+	minDistance := math.MaxFloat64
+	if len(clients) != 0 {
+		for i := 0; i < len(clients); i++ {
+			dis := getDistance(req.Latitude, req.Longitude, clients[i].Latitude, clients[i].Longitude)
+			if dis < minDistance {
+				minClient = clients[i]
+				minDistance = dis
+			}
 		}
 	}
 
