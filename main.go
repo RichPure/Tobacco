@@ -24,6 +24,8 @@ type GridResponse struct {
 	Population  uint64  `json:"population" xml:"population" form:"population"`
 	Distance    float64 `json:"distance" xml:"distance" form:"distance"`
 	CompanyName string  `json:"company_name" xml:"company_name" form:"company_name"`
+	Longitude   float64 `json:"longitude" xml:"longitude" form:"longitude"`
+	Latitude    float64 `json:"latitude" xml:"latitude" form:"latitude"`
 }
 
 type ClientInfo struct {
@@ -91,19 +93,26 @@ func handleGrid(db *gorm.DB, req *GridRequest) (resp GridResponse) {
 	db.Table("grid_info").Find(&gridInfo, "grid_id = ?", req.Grid)
 
 	resp = GridResponse{Result: 0, Capacity: gridInfo.Capacity, Applied: gridInfo.Applied,
-		Population: gridInfo.Population, Distance: minDistance, CompanyName: minClient.CompanyName}
+		Population: gridInfo.Population, Distance: minDistance, CompanyName: minClient.CompanyName,
+		Longitude: minClient.Longitude, Latitude: minClient.Latitude}
 	jsonStr, _ := json.Marshal(resp)
 	fmt.Printf("grids resp=%s\n", jsonStr)
 	return
 }
 
 type resultRequest struct {
-	Business  uint    `json:"business" xml:"business" form:"business"`
-	RoomNum   uint    `json:"boomNum" xml:"boomNum" form:"boomNum"`
-	Grid      uint    `json:"grid" xml:"grid" form:"grid"`
-	Grade     uint    `json:"grade" xml:"grade" form:"grade"`
-	Latitude  float64 `json:"latitude" xml:"latitude" form:"latitude"`
-	Longitude float64 `json:"longitude" xml:"longitude" form:"longitude"`
+	Business           uint    `json:"business" xml:"business" form:"business"`
+	RoomNum            uint    `json:"room_num" xml:"room_num" form:"room_num"`
+	Grid               uint    `json:"grid" xml:"grid" form:"grid"`
+	Grade              uint    `json:"grade" xml:"grade" form:"grade"`
+	Latitude           float64 `json:"latitude" xml:"latitude" form:"latitude"`
+	Longitude          float64 `json:"longitude" xml:"longitude" form:"longitude"`
+	RegisteName        string  `json:"registe_name: xml:"registe_name" form:"registe_name"`
+	RegisteIdNum       string  `json:"registe_id_num: xml:"registe_id_num" form:"registe_id_num"`
+	RegisteCompanyName string  `json:"registe_company_name: xml:"registe_company_name" form:"registe_company_name"`
+	RegisteAddress     string  `json:"registe_address: xml:"registe_address" form:"registe_address"`
+	RegisteBelongGrid  uint    `json:"registe_belong_grid: xml:"registe_belong_grid" form:"registe_belong_grid"`
+	RegisteInspector   string  `json:"registe_inspector: xml:"registe_inspector" form:"registe_inspector"`
 }
 type resultResponse struct {
 	Result uint   `json:"result" xml:"result" form:"result"`
