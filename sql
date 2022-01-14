@@ -1,3 +1,14 @@
+sudo dnf install @mysql
+sudo systemctl enable --now mysqld
+systemctl status mysqld.service
+sudo mysql_secure_installation #设置root密码
+mysql -uroot -pxxx
+systemctl status mysqld
+systemctl restart mysqld
+systemctl status mysqld
+mysql -uroot -pxxx
+mysql -hxx.xx.xx.xx -P3306 -uroot -p
+
 create table client_grid
 (
     client_id bigint default 0 not null
